@@ -1,11 +1,10 @@
 import React, { Fragment } from "react"
 import Router from "Components/Router"
-import Header from "Components/Header"
+import "./reset.css"
 
 function App() {
   return (
     <Fragment>
-      <Header />
       <Router />
     </Fragment>
   )
