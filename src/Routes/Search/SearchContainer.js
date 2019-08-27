@@ -6,9 +6,13 @@ export default class extends React.Component {
   state = {
     movieResults: null,
     tvResults: null,
-    searchTerm: "",
+    searchTerm: "code",
     error: null,
     loading: false
+  }
+
+  componentDidMount() {
+    this.handleSubmit()
   }
 
   handleSubmit = () => {
@@ -39,6 +43,7 @@ export default class extends React.Component {
 
   render() {
     const { movieResults, tvResults, searchTerm, error, loading } = this.state
+    console.log(this.state)
     return (
       <SearchPresenter
         movieResults={movieResults}
