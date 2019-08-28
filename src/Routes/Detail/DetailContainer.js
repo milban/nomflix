@@ -1,6 +1,6 @@
 import React from "react"
 import DetailPresenter from "./DetailPresenter"
-import { movieApi, tvApi } from "../../api"
+import { movieApi, tvApi } from "api"
 
 export default class extends React.Component {
   constructor(props) {
@@ -24,16 +24,16 @@ export default class extends React.Component {
       history: { push }
     } = this.props
     const { isMovie } = this.state
-    const parseId = parseInt(id)
-    if (isNaN(parseId)) {
+    const parsedId = parseInt(id)
+    if (isNaN(parsedId)) {
       return push("/")
     }
     let result = null
     try {
       if (isMovie) {
-        result = await movieApi.movieDetail(parseId)
+        ;({ data: result } = await movieApi.movieDetail(parsedId))
       } else {
-        result = await tvApi.showDetail(parseId)
+        ;({ data: result } = await tvApi.showDetail(parsedId))
       }
     } catch {
       this.setState({ error: "Can't find anything." })
@@ -45,6 +45,6 @@ export default class extends React.Component {
   render() {
     const { result, error, loading } = this.state
     console.log(this.state)
-    return <DetailPresenter result={result} error={error} loading={loading}></DetailPresenter>
+    return <DetailPresenter result={result} error={error} loading={loading} />
   }
 }
