@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const Container = styled.div`
-  &:not(:last-child) {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
+  &:first-child {
+    padding-top: 30px;
   }
 `
 
